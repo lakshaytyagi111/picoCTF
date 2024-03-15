@@ -1,0 +1,22 @@
+#! /bin/bash
+
+#this script uses nmap to scan for open ports on an ip address
+
+echo "Enter the IP address you wish to scan for :"
+
+read IP
+
+echo "Enter the port number to scan (0 to scan every port) :"
+
+read port
+def="0"
+
+if [ "$port" != "$def" ]; then
+	echo "scanned $IP address at port $port and got following results : "
+	nmap -sT $IP -p $port | grep open
+else
+	echo "During copmlete scan"
+	echo "Following ports were found open"
+	nmap -sT $IP | grep open
+
+fi
